@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "龙猫"
-date: 2016-07-05 
+date: 2018-06-20 
 tag: 宫崎骏
 
 ---     
