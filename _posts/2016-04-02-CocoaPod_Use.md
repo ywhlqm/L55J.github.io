@@ -1,176 +1,44 @@
 ---
 layout: post
-title: CocoaPods使用心得
-date: 2016-04-02
-tag: iOS 
+title: 萤火之森
+date: 2018-06-21
+tag: 治愈系
 --- 
+故事发生在被翠绿色覆盖的 “山神之森”，小女孩萤游玩之中迷失了方向，遇到了带着狐狸面具的少年银，二人结下了奇妙的友谊。此后每一年，萤都会来到这片山林找银，但银的真实身份则是一旦被人类触碰就会消失的灵物。
 
-### 简介：   
-　本章介绍什么是 `CocoaPods` ,如何使用 `CocoaPods` , 以及 `CocoaPods` 的原理,和使用 `CocoaPods` 时经常出现的一些问题。
+### 剧情简介
 
-　Cocoapods 是 OS X 和 iOS 下的一个第三方库管理工具。我们能使用CocoaPods添加被称作 “Pods”的依赖库,并轻松管理它们的版本,CocoaPods会帮我们配置好这些三方库的路径及开发环境,极大的提升了开发者的工作效率。
+竹川萤在妈妈的唠叨声中把行李准备好，出门到乡下的外公家去。随着小萤的思绪，画面回到过去，6岁的小萤每年夏天都会到乡下外公家，一天，小萤独自在外公家附近的树林里玩，却迷路了。突然一个带着面具的大哥哥出现，从与大哥哥的谈话中，小萤得知他住在森林里，但不是人类，并且不能被人类触碰，否则会消失。
+大哥哥把小萤带出森林，边走边告诉小萤，这个森林是山神和妖怪们所居住的，不能随便进来，否则会受到妖惑而出不去。小萤跟在大哥哥后面，心生好感，于是小萤坚持说第二天会带着礼物来感谢他。大哥哥默许了小萤的决定，并告诉小萤，他叫阿银。
+第二天，小萤真的去找阿银，而阿银也在路口等着。阿银带小萤去散步，两人还一起吃了冰棍，小萤感觉非常有趣。突然小萤身后出现一个妖怪，阿银告诉妖怪小萤是自己的朋友，而妖怪则警告小萤，千万不要碰阿银，否则它会把小萤吃掉。接下来的几天小萤都与阿银在一起，一次两人在草地上，小萤趁阿银睡着，摘下来阿银的面具，看到阿银是个英俊的少年。
+一天，小萤遗憾地告诉阿银，自己明天不能来了，因为要开学，要回自己的家去了，自己是夏天才过来外公家的。阿银告诉小萤，明年夏天再过来，自己会等着小萤。于是两人每一年都夏天都待在一起玩。一天，捣蛋的小萤倒挂在树上，不小心掉下来，阿银着急的伸出手却没有接住她，因为触碰她自己就会消失。庆幸阿银没有碰到自己的小萤同时又感到很伤心，因为无法触碰到阿银。
+就这样一年又一年，小萤和阿银度过了每一个夏天，两人在草地上聊天，在森林里漫步，在草地上一起放风筝，感情也越来越好。小萤自己都上了初中，却发现阿银貌似没怎么变。一天，小萤和外公的聊天中知道今年冬天会很冷，于是小萤给阿银送去了围巾。
 
+### 主要人物    
 
-### 安装CocoaPods　    
+**竹川萤**
+ 
+人类的小女孩，每个暑假都在乡下爷爷家度过，六岁的她在“山神之森”迷路，遇见了神秘的少年“银”，被银所救，两人渐渐成了好朋友。之后，每个暑假萤都会到森林里和银见面。萤有一高兴就扑向别人的习惯，但因为银是一被人类触碰就会消失的被山神庇护的非人非妖，所以萤总是克制住自己。随着萤渐渐长大，她对银的好感渐渐转变为思念——一种朦胧的爱恋，每天都渴望见到银。最后与银一起参加了妖怪的祭典，在银即将消失的时候拥抱了银。把银留下的面具当做终生的纪念。
 
-　Mac下自带ruby,使用ruby的gem命令安装,ruby的软件源被墙了,把官方的ruby源替换成国内的淘宝源。
+**阿银/阿金**
 
-### 更换Gem源   
+银住在森林里、戴着面具的神秘少年，自称是“妖怪”。 [4]  其实是从小被父母遗弃在山林里的孤儿，被山里的妖怪所救，山神怜悯他，在他身上施下法术，也因为这样他一直不能升天，就像幽灵一样，可是以妖术维持的身体太脆弱了，一旦被人类触碰就会消失，被妖怪保护着。喜欢萤但不敢触碰萤，但因为与萤与日俱增的情感，最终还是渴望触碰萤。约萤去参加妖怪举办的祭典，称“这就是约会”，在祭典后隔着面具吻了萤，并将面具送给了萤。在祭典后的路上扶起一个小孩，意外的是这孩子是人类，银即将消失，但他却欣慰地向萤敞开了怀抱，“萤，我终于可以触碰你了！”最后在萤的拥抱中渐渐消失，对萤说出了“我喜欢你！”并得到了回应。
 
-```bash
-$ gem sources --remove https://rubygems.org/
-$ gem sources -a https://ruby.taobao.org/
-$ gem sources -l
-```
-* 1.移除掉原有的源（服务器在国外，速度较慢）。
-* 2.等1有反应之后再敲2命令（替换成淘宝上的ruby镜像https）。
-* 3.验证是否成功。成功如下：
+随着萤渐渐长大，她对阿银的好感渐渐转变为思念——一种朦胧的爱恋，最后与阿银一起参加了妖怪的祭典，却在祭典后发生意外,在阿银即将消失的时候向萤敞开了怀抱拥抱了萤。
 
-```bash
+### 创作背景
 
-*** CURRENT SOURCES ***
+《萤火之森》漫画的创作早于《夏目友人帐》，两者都是讲述发生在乡村的妖怪与人的温馨的故事，所以可以说《萤火之森》是《夏目友人帐》的“前传”，可以说没有《萤火之森》就没有《夏目友人帐》。但是《萤火之森》的剧场化晚于《夏目友人帐》，但是两部动漫都是同一个制作团队制作。所以可以说《萤火之森》与《夏目友人帐》一脉相承。
+漫画作者绿川幸漫画风格为淡淡的画风，空灵清新，剧场化的是《萤火之森》也给人以这种感觉。44分钟的动画电影，没有跌宕起伏的剧情，有的只是平淡又充满温馨和感动的画面。
+由于绿川幸出生于日本熊本县，出于对自己家乡的偏爱，所以动画中的神社就是以日本熊本县的护国神社为背景。
+《萤火之森》宣布剧场化是在日本发生东日本大地震后的23天之后，所以《萤火之森》也承担着某种社会责任，以及对大地震中的受难人们的希冀。而且这部电影已经国际电影节圣丹斯电影节，柏林电影节，并克莱蒙费朗国际放映至今。
 
-http://ruby.taobao.org/
+### 获奖情况
 
-```
+苏格兰举办的“Scotland Loves Animation 2011”大赛中《萤火之森》获得了评委会特别奖。
 
-### 更新Gem源
+《萤火之森》获第66届每日电影大赛中获得了最优秀动画电影奖。 [8]  同时为了纪念本次获奖，《萤火之森》于2012年1月21日在东京池袋Cinelibre及大阪梅田Theatres两家电影院再次上映。此外，电影的DVD及蓝碟也将于2月22日起开始发售，并附有插画卡片等豪华特典。
 
-```bash
-
-sudo gem update --system
-
-```
-
-### 安装cocoapods        
-
-```bash
-
-$ sudo gem install cocoapods
-$ pod setup
-
-```
-
-pod setup 在执行时会比较慢，因为Cocoapods 要将它的信息下载到 ~/.cocoapods目录下, 耐心等待…
-
-
-#### 提升cocoapods的安装速度
-
-所有的项目的 Podspec 文件都托管在https://github.com/CocoaPods/Specs。第一次执行 pod setup 时，CocoaPods 会将这些podspec索引文件更新到本地的 ~/.cocoapods/目录下，这个索引文件比较大，有 80M 左右。
-作者akinliu 在 gitcafe 和 oschina 上建立了 CocoaPods 索引库的镜像(在国内),我们可以使用CocoaPods国内的镜像索引，操作时会快多了,如gitcafe：
-
-```bash
-
-pod repo remove master
-pod repo add master https://gitcafe.com/akuandev/Specs.git
-pod repo update
-
-```
-
-
-### 使用cocoapods
-
-cocoapods安装完成后，使用 pod search 命令来验证一下
-
-```bash
-
-pod search AFNetworking
-
-
-```
-
-终端将会有如下结果：
-
-```bash
-
--> AFNetworking (3.0.4)
-A delightful iOS and OS X networking framework.
-pod 'AFNetworking', '~> 3.0.4'
-- Homepage: https://github.com/AFNetworking/AFNetworking
-- Source:   https://github.com/AFNetworking/AFNetworking.git
-- Versions: 3.0.4, 3.0.3, 3.0.2, 3.0.1, 3.0.0, 3.0.0-beta.3, 3.0.0-beta.2,
-3.0.0-beta.1, 2.6.3, 2.6.2, 2.6.1, 2.6.0, 2.5.4, 2.5.3, 2.5.2, 2.5.1, 2.5.0,
-2.4.1, 2.4.0, 2.3.1, 2.3.0, 2.2.4, 2.2.3, 2.2.2, 2.2.1, 2.2.0, 2.1.0, 2.0.3,
-2.0.2, 2.0.1, 2.0.0, 2.0.0-RC3, 2.0.0-RC2, 2.0.0-RC1, 1.3.4, 1.3.3, 1.3.2,
-1.3.1, 1.3.0, 1.2.1, 1.2.0, 1.1.0, 1.0.1, 1.0, 1.0RC3, 1.0RC2, 1.0RC1,
-0.10.1, 0.10.0, 0.9.2, 0.9.1, 0.9.0, 0.7.0, 0.5.1 [master repo]
-- Subspecs:
-- AFNetworking/Serialization (3.0.4)
-- AFNetworking/Security (3.0.4)
-- AFNetworking/Reachability (3.0.4)
-- AFNetworking/NSURLSession (3.0.4)
-- AFNetworking/UIKit (3.0.4)
-
-
--> AFNetworking+AutoRetry (0.0.5)
-Auto Retries for AFNetworking requests
-pod 'AFNetworking+AutoRetry', '~> 0.0.5'
-- Homepage: https://github.com/shaioz/AFNetworking-AutoRetry
-- Source:   https://github.com/shaioz/AFNetworking-AutoRetry.git
-- Versions: 0.0.5, 0.0.4, 0.0.3, 0.0.2, 0.0.1 [master repo]
-
-.........太多了，省略
-
-```
-
-pod search 是CocoaPods的一个搜索命令,我们可以用来搜索任何托管在CocoaPods上的三方库。    
-
-使用CocoaPods时需要新建一个 Podfile 的文件,cd 到 我的Demo项目里，Demo目录下有三个文件
-
-```bash
-
-Demo 、  Demo.xcodeproj  、 DemoTests
-
-```
-
-新建 Podfile
-
-```bash
-
-touch Podfile
-
-```
-
-vim 编辑 Podfile
-
-```bash
-vim Podfile
-```
-由于是新建的 Podfile 里面应该是空白的。然后我们在里面添加依赖库，格式如下：
-
-```bash
-
-platform :ios
-pod 'Reachability',  '~> 3.0.0'
-pod 'ASIHTTPRequest'
-
-```
-
-‘~> 3.0.0’ 是 Reachability 的版本号, 设定了版本号CocoaPods就会下载对应的版本,ASIHTTPRequest没指定版本号,CocoaPods就会下载最新版本的ASIHTTPRequest。
-退出编辑，执行 pod install 下载三方库。
-
-```bash
-
-pod install
-
-```
-完成后我Demo项目下的文件多了几个:
-
-```bash
-Demo 、  Demo.xcodeproj  、 DemoTests （之前的三个）
-
-Demo.xcworkspace 、Podfile 、Podfile.lock 、Pods
-```
-
-这个时候我们打开Demo项目是点击 Demo.xcworkspace 文件了，到此CocoaPods的基本使用已经讲完了，接下来的CocoaPods的原理，和让我们自己的三方库也支持CocoaPods。
-
-待续…
-
-[深入理解 CocoaPods](http://blog.jobbole.com/53365/)    
-
-<br>
-
-转载请注明：[潘柏信的博客](http://baixin) » [点击阅读原文](http://baixin.io/2016/04/CocoaPod_Use/)     
 
 
 
